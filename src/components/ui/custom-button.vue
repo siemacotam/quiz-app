@@ -58,8 +58,8 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 button:disabled {
-  background-color: grey;
-  color: white;
+  background-color: $light-grey;
+  color: $dark-grey;
   cursor: not-allowed;
   opacity: 0.6;
 }
