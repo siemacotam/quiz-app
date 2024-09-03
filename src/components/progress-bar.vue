@@ -1,44 +1,33 @@
 <template>
   <div class="container">
-    <div :style="fillerStyles">
+    <div v-bind:style="fillerStyles">
       <span class="label">{{ `${completed}%` }}</span>
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import { StyleValue } from "vue";
-import { computed, defineComponent } from "vue";
+<script setup lang="ts">
+import { computed, defineProps } from "vue";
 
-export default defineComponent({
-  name: "ProgressBar",
-  props: {
-    bgcolor: {
-      type: String,
-      required: true,
-    },
-    completed: {
-      type: Number,
-      required: true,
-    },
+const props = defineProps({
+  bgcolor: {
+    type: String,
+    required: true,
   },
-  setup(props) {
-    const styles = computed(() => {
-      return {
-        height: "100%",
-        width: `${props.completed}%`,
-        backgroundColor: props.bgcolor,
-        transition: "width 1s ease-in-out",
-        borderRadius: "inherit",
-        textAlign: "right",
-      };
-    });
-
-    const fillerStyles = styles.value as StyleValue;
-
-    return { fillerStyles };
+  completed: {
+    type: Number,
+    required: true,
   },
 });
+
+const fillerStyles = computed(() => ({
+  height: "100%",
+  width: `${props.completed}%`,
+  backgroundColor: props.bgcolor,
+  transition: "width 1s ease-in-out",
+  borderRadius: "inherit",
+  textAlign: "right",
+}));
 </script>
 
 <style scoped>

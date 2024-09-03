@@ -40,7 +40,7 @@
         <CustomButton
           v-if="!quizCompleted"
           :disabled="currentQuestionIndex <= 0 || !allQuestionsAnswered"
-          buttonType="answer"
+          buttonType="top"
           :onClick="submitQuiz"
           fullWidth
           >Submit
